@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use JustBetter\AkeneoClient\ServiceProvider as AkeneoServiceProvider;
 use JustBetter\AkeneoProducts\ServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Spatie\Activitylog\ActivitylogServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -16,6 +17,7 @@ abstract class TestCase extends BaseTestCase
         return [
             ServiceProvider::class,
             AkeneoServiceProvider::class,
+            ActivitylogServiceProvider::class,
         ];
     }
 
@@ -27,5 +29,7 @@ abstract class TestCase extends BaseTestCase
             'database' => ':memory:',
             'prefix' => '',
         ]);
+
+        activity()->disableLogging();
     }
 }

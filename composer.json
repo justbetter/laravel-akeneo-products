@@ -20,7 +20,8 @@
         "php": "^8.1",
         "justbetter/laravel-akeneo-client": "^1.1",
         "justbetter/laravel-error-logger": "^2.3",
-        "laravel/framework": "^10.0"
+        "laravel/framework": "^10.0",
+        "spatie/laravel-activitylog": "^4.7"
     },
     "require-dev": {
         "laravel/pint": "^1.10",
