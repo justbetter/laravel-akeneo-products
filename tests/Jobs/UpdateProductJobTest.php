@@ -2,6 +2,7 @@
 
 namespace JustBetter\AkeneoProducts\Tests\Jobs;
 
+use Exception;
 use JustBetter\AkeneoProducts\Contracts\UpdatesProduct;
 use JustBetter\AkeneoProducts\Jobs\UpdateProductJob;
 use JustBetter\AkeneoProducts\Models\Product;
@@ -39,7 +40,7 @@ class UpdateProductJobTest extends TestCase
         ]);
 
         $job = new UpdateProductJob($product);
-        $job->failed();
+        $job->failed(new Exception);
 
         $this->assertNotNull($product->failed_at);
     }

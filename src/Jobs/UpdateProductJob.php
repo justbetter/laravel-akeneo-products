@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use JustBetter\AkeneoProducts\Contracts\UpdatesProduct;
 use JustBetter\AkeneoProducts\Models\Product;
+use Throwable;
 
 class UpdateProductJob implements ShouldQueue, ShouldBeUnique
 {
@@ -41,8 +42,19 @@ class UpdateProductJob implements ShouldQueue, ShouldBeUnique
         ];
     }
 
-    public function failed(): void
+    public function failed(Throwable $throwable): void
     {
         $this->product->failed();
+
+        activity()
+            ->on($this->product)
+            ->withProperties([
+                'message' => $throwable->getMessage(),
+                'code' => $throwable->getCode(),
+                'metadata' => [
+                    'level' => 'error',
+                ],
+            ])
+            ->log('Failed to update product in Akeneo');
     }
 }
