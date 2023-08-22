@@ -10,5 +10,8 @@ return [
 
         /* Class responsible to retrieve the products from. */
         'product' => \JustBetter\AkeneoProducts\Retrievers\Product\ProductRetriever::class,
+
+        /* Class responsible to retrieve the product models from. */
+        'product_model' => \JustBetter\AkeneoProducts\Retrievers\ProductModel\ProductModelRetriever::class,
     ],
 ];

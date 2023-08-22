@@ -14,9 +14,16 @@ use JustBetter\AkeneoProducts\Actions\Product\ProcessProducts;
 use JustBetter\AkeneoProducts\Actions\Product\RetrieveProduct;
 use JustBetter\AkeneoProducts\Actions\Product\SaveProduct;
 use JustBetter\AkeneoProducts\Actions\Product\UpdateProduct;
+use JustBetter\AkeneoProducts\Actions\ProductModel\ProcessProductModels;
+use JustBetter\AkeneoProducts\Actions\ProductModel\RetrieveProductModel;
+use JustBetter\AkeneoProducts\Actions\ProductModel\SaveProductModel;
+use JustBetter\AkeneoProducts\Actions\ProductModel\UpdateProductModel;
 use JustBetter\AkeneoProducts\Commands\Product\ProcessProductsCommand;
 use JustBetter\AkeneoProducts\Commands\Product\RetrieveProductCommand;
 use JustBetter\AkeneoProducts\Commands\Product\UpdateProductCommand;
+use JustBetter\AkeneoProducts\Commands\ProductModel\ProcessProductModelsCommand;
+use JustBetter\AkeneoProducts\Commands\ProductModel\RetrieveProductModelCommand;
+use JustBetter\AkeneoProducts\Commands\ProductModel\UpdateProductModelCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -36,11 +43,19 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerActions(): static
     {
+        // Products
         ProcessProducts::bind();
         RetrieveProduct::bind();
         SaveProduct::bind();
         UpdateProduct::bind();
 
+        // Product models
+        ProcessProductModels::bind();
+        RetrieveProductModel::bind();
+        SaveProductModel::bind();
+        UpdateProductModel::bind();
+
+        // Akeneo
         CreateAttributeOption::bind();
         FormatAttributeValues::bind();
         GetAttribute::bind();
@@ -80,9 +95,15 @@ class ServiceProvider extends BaseServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
+                // Product
                 ProcessProductsCommand::class,
                 RetrieveProductCommand::class,
                 UpdateProductCommand::class,
+
+                // Product models
+                ProcessProductModelsCommand::class,
+                RetrieveProductModelCommand::class,
+                UpdateProductModelCommand::class,
             ]);
         }
 
