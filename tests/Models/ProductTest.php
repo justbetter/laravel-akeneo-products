@@ -3,6 +3,7 @@
 namespace JustBetter\AkeneoProducts\Tests\Models;
 
 use JustBetter\AkeneoProducts\Models\Product;
+use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\Product\ProductRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 
 class ProductTest extends TestCase
@@ -10,7 +11,7 @@ class ProductTest extends TestCase
     /** @test */
     public function it_can_stop_the_synchronization(): void
     {
-        config()->set('akeneo-products.tries', 2);
+        config()->set('akeneo-products.retrievers.product', ProductRetriever::class);
 
         /** @var Product $product */
         $product = Product::query()->create([

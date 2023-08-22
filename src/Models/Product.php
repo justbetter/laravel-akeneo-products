@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use JustBetter\AkeneoProducts\Retrievers\Product\BaseProductRetriever;
 
 /**
  * @property int $id
@@ -60,8 +61,7 @@ class Product extends Model
         $this->fail_count++;
         $this->failed_at = now();
 
-        /** @var int $tries */
-        $tries = config('akeneo-products.tries', 0);
+        $tries = BaseProductRetriever::current()->tries();
 
         if ($tries > 0 && $this->fail_count >= $tries) {
             $this->synchronize = false;

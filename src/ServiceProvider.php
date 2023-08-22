@@ -10,13 +10,13 @@ use JustBetter\AkeneoProducts\Actions\Akeneo\GetAttributeOptions;
 use JustBetter\AkeneoProducts\Actions\Akeneo\GetLocales;
 use JustBetter\AkeneoProducts\Actions\Akeneo\GetScopes;
 use JustBetter\AkeneoProducts\Actions\Akeneo\ResolveAttributeOption;
-use JustBetter\AkeneoProducts\Actions\ProcessProducts;
-use JustBetter\AkeneoProducts\Actions\RetrieveProduct;
-use JustBetter\AkeneoProducts\Actions\SaveProduct;
-use JustBetter\AkeneoProducts\Actions\UpdateProduct;
-use JustBetter\AkeneoProducts\Commands\ProcessProductsCommand;
-use JustBetter\AkeneoProducts\Commands\RetrieveProductCommand;
-use JustBetter\AkeneoProducts\Commands\UpdateProductCommand;
+use JustBetter\AkeneoProducts\Actions\Product\ProcessProducts;
+use JustBetter\AkeneoProducts\Actions\Product\RetrieveProduct;
+use JustBetter\AkeneoProducts\Actions\Product\SaveProduct;
+use JustBetter\AkeneoProducts\Actions\Product\UpdateProduct;
+use JustBetter\AkeneoProducts\Commands\Product\ProcessProductsCommand;
+use JustBetter\AkeneoProducts\Commands\Product\RetrieveProductCommand;
+use JustBetter\AkeneoProducts\Commands\Product\UpdateProductCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {

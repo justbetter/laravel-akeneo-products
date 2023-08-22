@@ -57,7 +57,7 @@ class FormatAttributeValues implements FormatsAttributeValues
         return $values;
     }
 
-    public function value(mixed $data, ?string $scope = null, ?string $locale = null): array
+    public function value(mixed $data, string $scope = null, string $locale = null): array
     {
         return [
             'data' => $data,

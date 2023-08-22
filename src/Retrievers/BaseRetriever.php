@@ -2,20 +2,29 @@
 
 namespace JustBetter\AkeneoProducts\Retrievers;
 
-use JustBetter\AkeneoProducts\Data\ProductData;
-
 abstract class BaseRetriever
 {
-    abstract public function retrieve(string $identifier): ?ProductData;
+    /* Max tries before a resource sync will automatically be turned off. */
+    protected int $tries = 3;
 
-    public static function current(): BaseRetriever
+    /* Amount of resources to be retrieved at once when processing. */
+    protected int $retrieveBatchSize = 100;
+
+    /* Amount of resources to be updated at once when processing. */
+    protected int $updateBatchSize = 25;
+
+    public function tries(): int
     {
-        /** @var string $class */
-        $class = config('akeneo-products.retriever');
+        return $this->tries;
+    }
 
-        /** @var BaseRetriever $retriever */
-        $retriever = app($class);
+    public function retrieveBatchSize(): int
+    {
+        return $this->retrieveBatchSize;
+    }
 
-        return $retriever;
+    public function updateBatchSize(): int
+    {
+        return $this->updateBatchSize;
     }
 }
