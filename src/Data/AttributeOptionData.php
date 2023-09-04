@@ -8,7 +8,7 @@ class AttributeOptionData extends Data
         'code' => 'required|string',
         'attribute' => 'required|string',
         'sort_order' => 'required|int',
-        'labels' => 'required|array',
+        'labels' => 'array',
     ];
 
     public function code(): string
