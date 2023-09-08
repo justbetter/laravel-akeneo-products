@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/1.0.2...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/1.0.3...main)
+## [1.0.3](https://github.com/justbetter/laravel-akeneo-products/releases/tag/1.0.3) - 2023-09-08
+
+### What's Changed
+* Fix interface namespace by @ramonrietdijk in https://github.com/justbetter/laravel-akeneo-products/pull/3
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/1.0.2...1.0.3
+
 ## [1.0.2](https://github.com/justbetter/laravel-akeneo-products/releases/tag/1.0.2) - 2023-09-04
 
 ### What's Changed
