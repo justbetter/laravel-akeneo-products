@@ -1,68 +1,69 @@
 {
-    "name": "justbetter/laravel-akeneo-products",
-    "description": "Easily export products to Akeneo from your ERP",
-    "type": "package",
-    "license": "MIT",
-    "homepage": "https://github.com/justbetter/laravel-akeneo-products",
-    "authors": [
-        {
-            "name": "Ramon Rietdijk",
-            "email": "ramon@justbetter.nl",
-            "role": "Developer"
-        },
-        {
-            "name": "Vincent Boon",
-            "email": "vincent@justbetter.nl",
-            "role": "Developer"
-        }
+  "name": "justbetter/laravel-akeneo-products",
+  "description": "Easily export products to Akeneo from your ERP",
+  "type": "package",
+  "license": "MIT",
+  "homepage": "https://github.com/justbetter/laravel-akeneo-products",
+  "authors": [
+    {
+      "name": "Ramon Rietdijk",
+      "email": "ramon@justbetter.nl",
+      "role": "Developer"
+    },
+    {
+      "name": "Vincent Boon",
+      "email": "vincent@justbetter.nl",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "justbetter/laravel-akeneo-client": "^1.1",
+    "justbetter/laravel-error-logger": "^2.3",
+    "laravel/framework": "^10.0",
+    "spatie/laravel-activitylog": "^4.7"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.10",
+    "nunomaduro/larastan": "^2.6",
+    "orchestra/testbench": "^8.5",
+    "phpstan/phpstan-mockery": "^1.1",
+    "phpunit/phpunit": "^10.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "JustBetter\\AkeneoProducts\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JustBetter\\AkeneoProducts\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "analyse": "phpstan",
+    "style": "pint --test",
+    "quality": [
+      "@test",
+      "@analyse",
+      "@style"
     ],
-    "require": {
-        "php": "^8.1",
-        "justbetter/laravel-akeneo-client": "^1.1",
-        "justbetter/laravel-error-logger": "^2.3",
-        "laravel/framework": "^10.0",
-        "spatie/laravel-activitylog": "^4.7"
-    },
-    "require-dev": {
-        "laravel/pint": "^1.10",
-        "nunomaduro/larastan": "^2.6",
-        "orchestra/testbench": "^8.5",
-        "phpstan/phpstan-mockery": "^1.1",
-        "phpunit/phpunit": "^10.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "JustBetter\\AkeneoProducts\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "JustBetter\\AkeneoProducts\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "analyse": "phpstan",
-        "style": "pint --test",
-        "quality": [
-            "@test",
-            "@analyse",
-            "@style"
-        ]
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "php-http/discovery": true
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "JustBetter\\AkeneoProducts\\ServiceProvider"
-            ]
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "fix-style": "pint"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "JustBetter\\AkeneoProducts\\ServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
