@@ -9,7 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\RetrievesProductModel;
 
-class RetrieveProductModelJob implements ShouldQueue, ShouldBeUnique
+class RetrieveProductModelJob implements ShouldBeUnique, ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;

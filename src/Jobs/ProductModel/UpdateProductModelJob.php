@@ -12,7 +12,7 @@ use JustBetter\AkeneoProducts\Contracts\ProductModel\UpdatesProductModel;
 use JustBetter\AkeneoProducts\Models\ProductModel;
 use Throwable;
 
-class UpdateProductModelJob implements ShouldQueue, ShouldBeUnique
+class UpdateProductModelJob implements ShouldBeUnique, ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;

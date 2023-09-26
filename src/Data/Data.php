@@ -6,7 +6,7 @@ use ArrayAccess;
 use Illuminate\Contracts\Support\Arrayable;
 use JustBetter\AkeneoProducts\Concerns\ValidatesData;
 
-abstract class Data implements ArrayAccess, Arrayable
+abstract class Data implements Arrayable, ArrayAccess
 {
     use ValidatesData;
 

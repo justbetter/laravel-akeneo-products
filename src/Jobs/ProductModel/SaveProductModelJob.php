@@ -10,7 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\SavesProductModel;
 use JustBetter\AkeneoProducts\Data\ProductModelData;
 
-class SaveProductModelJob implements ShouldQueue, ShouldBeUnique
+class SaveProductModelJob implements ShouldBeUnique, ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
