@@ -13,8 +13,6 @@ This package is built to easily create products in Akeneo from your ERP or other
 
 Aside from attributes, you can also set a family, categories and all other data you would normally be able to via the [API](https://api.akeneo.com/api-reference.html#Products).
 
-> **Note:** This package does not have support for product models yet.
-
 For more advanced use cases, it is also possible to add your own data to the payload.
 
 Products are retrieved and updated in small chunks to spread the load if your project has access to a lot of products. Updates of these products are only sent to Akeneo if something has been modified to prevent unnecessary requests.
@@ -39,19 +37,20 @@ Publish the configuration of the package.
 php artisan vendor:publish --provider="JustBetter\AkeneoProducts\ServiceProvider" --tag=config
 ```
 
-Add the following command to your scheduler.
+Add the following commands to your scheduler.
 
 ```php
 <?php
 
-use JustBetter\AkeneoProducts\Commands\ProcessProductsCommand;
-
-$schedule->command(ProcessProductsCommand::class)->everyMinute();
+$schedule->command(\JustBetter\AkeneoProducts\Commands\Product\ProcessProductsCommand::class)->everyMinute();
+$schedule->command(\JustBetter\AkeneoProducts\Commands\ProductModel\ProcessProductModelsCommand::class)->everyMinute();
 ```
 
 ## How it works
 
-When a product is retrieved, it will fetch the product from the (external) source. If the retrieved data is not null, it will be saved in the database. If the payload of the model has been changed, the `update`-property of the model will be set to `true`. This way, the package is aware of updates and can do them in small batches. The numbers can be tweaked in your configuration file.
+This section will describe the process of products but product models will be similar in usage.
+
+When a product is retrieved, it will fetch the product from the (external) source. If the retrieved data is not null, it will be saved in the database. If the payload of the database model has been changed, the `update`-property of the model will be set to `true`. This way, the package is aware of updates and can do them in small batches. The numbers can be tweaked in your retriever class.
 
 When a product has already been retrieved in the past, the `retrieve`-property of the model can be set to `true` in order to automatically fetch the data again. This is done by the `ProcessProductsCommand`, if added to your scheduler.
 
@@ -65,9 +64,12 @@ This package does **not** contain a way to retrieve "all" products. If you wish 
 ```php
 <?php
 
-use JustBetter\AkeneoProducts\Jobs\RetrieveProductJob;
+use JustBetter\AkeneoProducts\Jobs\Product\RetrieveProductJob;
+use JustBetter\AkeneoProducts\Jobs\ProductModel\RetrieveProductModelJob;
 
 RetrieveProductJob::dispatch('::identifier::');
+
+RetrieveProductModelJob::dispatch('::code::');
 ```
 
 ## Retrieving products
@@ -91,9 +93,9 @@ use JustBetter\AkeneoProducts\Contracts\Akeneo\FormatsAttributeValues;
 use JustBetter\AkeneoProducts\Data\ProductData;
 use JustBetter\AkeneoProducts\Enums\MappingType;
 use JustBetter\AkeneoProducts\Models\Mapping;
-use JustBetter\AkeneoProducts\Retrievers\BaseRetriever;
+use JustBetter\AkeneoProducts\Retrievers\Product\BaseProductRetriever;
 
-class ExampleRetriever extends BaseRetriever
+class ExampleProductRetriever extends BaseProductRetriever
 {
     public function __construct(
         protected FormatsAttributeValues $formatValue
@@ -150,6 +152,27 @@ class ExampleRetriever extends BaseRetriever
 }
 ```
 
+Product models can be implemented similarly use the following example:
+
+```php
+<?php
+
+use JustBetter\AkeneoProducts\Data\ProductModelData;
+use JustBetter\AkeneoProducts\Retrievers\ProductModel\BaseProductModelRetriever;
+
+class ExampleProductModelRetriever extends BaseProductModelRetriever
+{
+    public function retrieve(string $code): ?ProductModelData
+    {
+        //
+
+        return ProductModelData::of([
+            //
+        ]);
+    }
+}
+```
+
 ## Supported attribute types
 
 Currently, the following attribute types are supported by this package:
@@ -165,6 +188,8 @@ Currently, the following attribute types are supported by this package:
 ## Commands
 
 This package ships with a few commands.
+
+### Products
 
 Retrieve a product by it's identifier, it will automatically be saved to the database.
 
@@ -182,6 +207,26 @@ Update a product by it's identifier. This will manually trigger an update toward
 
 ```bash
 php artisan akeneo-products:update {identifier}
+```
+
+### Product models
+
+Retrieve a product model by it's code, it will automatically be saved to the database.
+
+```bash
+php artisan akeneo-products:model:retrieve {code}
+```
+
+Process all product models, this includes retrieving and updating product models.
+
+```bash
+php artisan akeneo-products:model:process
+```
+
+Update a product model by it's code. This will manually trigger an update towards Akeneo, regardless if the product model is up-to-date.
+
+```bash
+php artisan akeneo-products:model:update {code}
 ```
 
 ## Quality
