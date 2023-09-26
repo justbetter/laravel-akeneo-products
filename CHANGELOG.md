@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/1.0.3...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.0.0...main)
+## [2.0.0](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.0.0) - 2023-09-26
+
+### What's Changed
+* Implemented product models by @ramonrietdijk in https://github.com/justbetter/laravel-akeneo-products/pull/4
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/1.0.3...2.0.0
+
 ## [1.0.3](https://github.com/justbetter/laravel-akeneo-products/releases/tag/1.0.3) - 2023-09-08
 
 ### What's Changed
