@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
-use JustBetter\AkeneoProducts\Retrievers\Product\BaseProductRetriever;
+use JustBetter\AkeneoProducts\Retrievers\ProductModel\BaseProductModelRetriever;
 
 /**
  * @property int $id
- * @property string $identifier
+ * @property string $code
  * @property bool $synchronize
  * @property bool $retrieve
  * @property bool $update
@@ -24,11 +24,11 @@ use JustBetter\AkeneoProducts\Retrievers\Product\BaseProductRetriever;
  * @property ?Carbon $created_at
  * @property ?Carbon $deleted_at
  */
-class Product extends Model
+class ProductModel extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'akeneo_products';
+    protected $table = 'akeneo_product_models';
 
     protected $guarded = [];
 
@@ -61,7 +61,7 @@ class Product extends Model
         $this->fail_count++;
         $this->failed_at = now();
 
-        $tries = BaseProductRetriever::current()->tries();
+        $tries = BaseProductModelRetriever::current()->tries();
 
         if ($tries > 0 && $this->fail_count >= $tries) {
             $this->synchronize = false;
