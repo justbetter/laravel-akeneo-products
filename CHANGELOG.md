@@ -1,6 +1,24 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/1.0.1...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/1.0.3...main)
+## [1.0.3](https://github.com/justbetter/laravel-akeneo-products/releases/tag/1.0.3) - 2023-09-08
+
+### What's Changed
+* Fix interface namespace by @ramonrietdijk in https://github.com/justbetter/laravel-akeneo-products/pull/3
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/1.0.2...1.0.3
+
+## [1.0.2](https://github.com/justbetter/laravel-akeneo-products/releases/tag/1.0.2) - 2023-09-04
+
+### What's Changed
+* Labels are not required in attribute options by @ramonrietdijk in https://github.com/justbetter/laravel-akeneo-products/pull/2
+
+### New Contributors
+* @ramonrietdijk made their first contribution in https://github.com/justbetter/laravel-akeneo-products/pull/2
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/1.0.1...1.0.2
+
 ## [1.0.1](https://github.com/justbetter/laravel-akeneo-products/releases/tag/1.0.1) - 2023-06-27
 
 ### What's Changed
