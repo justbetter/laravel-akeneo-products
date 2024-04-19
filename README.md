@@ -1,3 +1,7 @@
+<a href="https://github.com/justbetter/laravel-akeneo-products" title="JustBetter">
+    <img src="./art/banner.svg" alt="Package banner">
+</a>
+
 # Laravel Akeneo Products
 
 <p>
@@ -260,3 +264,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+<a href="https://justbetter.nl" title="JustBetter">
+    <img src="./art/footer.svg" alt="Package footer">
+</a>
