@@ -48,12 +48,10 @@ class UpdateProductModelJob implements ShouldBeUnique, ShouldQueue
 
         activity()
             ->on($this->productModel)
+            ->useLog('error')
             ->withProperties([
                 'message' => $throwable->getMessage(),
                 'code' => $throwable->getCode(),
-                'metadata' => [
-                    'level' => 'error',
-                ],
             ])
             ->log('Failed to update product model in Akeneo');
     }
