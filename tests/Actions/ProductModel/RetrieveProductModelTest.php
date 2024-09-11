@@ -7,10 +7,11 @@ use JustBetter\AkeneoProducts\Actions\ProductModel\RetrieveProductModel;
 use JustBetter\AkeneoProducts\Jobs\ProductModel\SaveProductModelJob;
 use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\ProductModel\ProductModelRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class RetrieveProductModelTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_retrieve_product_models(): void
     {
         Bus::fake();

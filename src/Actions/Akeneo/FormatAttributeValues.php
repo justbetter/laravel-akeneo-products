@@ -16,8 +16,7 @@ class FormatAttributeValues implements FormatsAttributeValues
         protected TypeFactory $typeFactory,
         protected GetsScopes $getsScopes,
         protected GetsLocales $getsLocales
-    ) {
-    }
+    ) {}
 
     public function format(string $attributeCode, mixed $value): array
     {

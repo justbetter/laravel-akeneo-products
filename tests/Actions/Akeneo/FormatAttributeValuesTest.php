@@ -13,10 +13,11 @@ use JustBetter\AkeneoProducts\Data\LocaleData;
 use JustBetter\AkeneoProducts\Data\ScopeData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class FormatAttributeValuesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_format_attribute_values_unscoped_unlocalized(): void
     {
         Akeneo::fake();
@@ -75,7 +76,7 @@ class FormatAttributeValuesTest extends TestCase
         ], $values);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_format_attribute_values_unscoped_localized(): void
     {
         Akeneo::fake();
@@ -134,7 +135,7 @@ class FormatAttributeValuesTest extends TestCase
         ], $values);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_format_attribute_values_scoped_unlocalized(): void
     {
         Akeneo::fake();
@@ -193,7 +194,7 @@ class FormatAttributeValuesTest extends TestCase
         ], $values);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_format_attribute_values_scoped_localized(): void
     {
         Akeneo::fake();

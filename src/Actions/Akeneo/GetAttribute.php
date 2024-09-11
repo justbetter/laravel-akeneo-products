@@ -11,8 +11,7 @@ class GetAttribute implements GetsAttributes
 {
     public function __construct(
         protected Akeneo $akeneo
-    ) {
-    }
+    ) {}
 
     public function get(string $code): AttributeData
     {

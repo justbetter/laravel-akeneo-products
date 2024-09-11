@@ -12,10 +12,11 @@ use JustBetter\AkeneoProducts\Data\AttributeOptionData;
 use JustBetter\AkeneoProducts\Data\LocaleData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class ResolveAttributeOptionTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_resolve_attribute_options_using_code(): void
     {
         Akeneo::fake();
@@ -53,7 +54,7 @@ class ResolveAttributeOptionTest extends TestCase
         $this->assertEquals('optionCode', $data->code());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_resolve_attribute_options_using_labels(): void
     {
         Akeneo::fake();
@@ -91,7 +92,7 @@ class ResolveAttributeOptionTest extends TestCase
         $this->assertEquals('optionCode', $data->code());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_resolve_attribute_options_by_creating_a_new_option(): void
     {
         Akeneo::fake();

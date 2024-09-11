@@ -5,10 +5,11 @@ namespace JustBetter\AkeneoProducts\Tests\Models;
 use JustBetter\AkeneoProducts\Enums\MappingType;
 use JustBetter\AkeneoProducts\Models\Mapping;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class MappingTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_get_a_mapping(): void
     {
         /** @var Mapping $mapping */

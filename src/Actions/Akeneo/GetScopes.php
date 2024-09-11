@@ -13,8 +13,7 @@ class GetScopes implements GetsScopes
 {
     public function __construct(
         protected Akeneo $akeneo
-    ) {
-    }
+    ) {}
 
     public function get(): Enumerable
     {

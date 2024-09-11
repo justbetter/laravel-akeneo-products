@@ -4,10 +4,11 @@ namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use JustBetter\AkeneoProducts\Data\ProductModelData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ProductModelDataTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_interact_with_product_model_data(): void
     {
         $productModelData = ProductModelData::of([

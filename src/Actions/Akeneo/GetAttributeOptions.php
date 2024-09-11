@@ -13,8 +13,7 @@ class GetAttributeOptions implements GetsAttributeOptions
 {
     public function __construct(
         protected Akeneo $akeneo
-    ) {
-    }
+    ) {}
 
     public function get(string $code): Enumerable
     {

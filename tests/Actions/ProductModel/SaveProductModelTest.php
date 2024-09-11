@@ -6,10 +6,11 @@ use JustBetter\AkeneoProducts\Actions\ProductModel\SaveProductModel;
 use JustBetter\AkeneoProducts\Data\ProductModelData;
 use JustBetter\AkeneoProducts\Models\ProductModel;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class SaveProductModelTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_save_product_models(): void
     {
         $productModelData = ProductModelData::of([

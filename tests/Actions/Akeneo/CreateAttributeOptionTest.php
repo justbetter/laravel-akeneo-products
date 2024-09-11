@@ -11,10 +11,11 @@ use JustBetter\AkeneoProducts\Contracts\Akeneo\GetsAttributeOptions;
 use JustBetter\AkeneoProducts\Data\AttributeOptionData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class CreateAttributeOptionTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_create_attribute_options(): void
     {
         Akeneo::fake();

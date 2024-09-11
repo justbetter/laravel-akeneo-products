@@ -7,10 +7,11 @@ use Illuminate\Testing\PendingCommand;
 use JustBetter\AkeneoProducts\Commands\Product\ProcessProductsCommand;
 use JustBetter\AkeneoProducts\Jobs\Product\ProcessProductsJob;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ProcessProductsCommandTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_dispatch_jobs(): void
     {
         Bus::fake();

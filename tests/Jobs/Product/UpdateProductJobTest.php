@@ -8,10 +8,11 @@ use JustBetter\AkeneoProducts\Jobs\Product\UpdateProductJob;
 use JustBetter\AkeneoProducts\Models\Product;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class UpdateProductJobTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_update_products(): void
     {
         /** @var Product $product */
@@ -30,7 +31,7 @@ class UpdateProductJobTest extends TestCase
         UpdateProductJob::dispatch($product);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_fail(): void
     {
         /** @var Product $product */
@@ -45,7 +46,7 @@ class UpdateProductJobTest extends TestCase
         $this->assertNotNull($product->failed_at);
     }
 
-    /** @test */
+    #[Test]
     public function it_has_correct_tags_and_unique_id(): void
     {
         /** @var Product $product */

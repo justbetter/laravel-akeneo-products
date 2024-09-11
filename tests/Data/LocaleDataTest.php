@@ -4,10 +4,11 @@ namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use JustBetter\AkeneoProducts\Data\LocaleData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class LocaleDataTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_interact_with_locale_data(): void
     {
         $localeData = LocaleData::of([

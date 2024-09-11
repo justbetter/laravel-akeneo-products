@@ -15,8 +15,7 @@ class ResolveAttributeOption implements ResolvesAttributeOptions
         protected GetsAttributeOptions $getsAttributeOptions,
         protected GetsLocales $getsLocales,
         protected CreatesAttributeOptions $createsAttributeOptions
-    ) {
-    }
+    ) {}
 
     public function resolve(string $code, string $optionCode, string $label): AttributeOptionData
     {

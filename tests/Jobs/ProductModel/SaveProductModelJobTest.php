@@ -7,10 +7,11 @@ use JustBetter\AkeneoProducts\Data\ProductModelData;
 use JustBetter\AkeneoProducts\Jobs\ProductModel\SaveProductModelJob;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class SaveProductModelJobTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_save_product_models(): void
     {
         $productModelData = ProductModelData::of([
@@ -36,7 +37,7 @@ class SaveProductModelJobTest extends TestCase
         SaveProductModelJob::dispatch($productModelData);
     }
 
-    /** @test */
+    #[Test]
     public function it_has_correct_tags_and_unique_id(): void
     {
         $productModelData = ProductModelData::of([

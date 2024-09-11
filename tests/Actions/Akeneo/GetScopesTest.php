@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Http;
 use JustBetter\AkeneoClient\Client\Akeneo;
 use JustBetter\AkeneoProducts\Actions\Akeneo\GetScopes;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class GetScopesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_get_scopes(): void
     {
         Akeneo::fake();

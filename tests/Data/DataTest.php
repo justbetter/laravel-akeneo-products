@@ -5,10 +5,11 @@ namespace JustBetter\AkeneoProducts\Tests\Data;
 use Illuminate\Validation\ValidationException;
 use JustBetter\AkeneoProducts\Data\ProductData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class DataTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_interact_with_data(): void
     {
         $productData = ProductData::of([
@@ -36,12 +37,11 @@ class DataTest extends TestCase
         $this->assertNull($productData['identifier']);
     }
 
+    #[Test]
     public function it_can_throw_exceptions(): void
     {
         $this->expectException(ValidationException::class);
 
-        ProductData::of([
-            'identifier' => 'identifier',
-        ]);
+        ProductData::of([]);
     }
 }

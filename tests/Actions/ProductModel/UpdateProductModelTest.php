@@ -8,10 +8,11 @@ use JustBetter\AkeneoClient\Client\Akeneo;
 use JustBetter\AkeneoProducts\Actions\ProductModel\UpdateProductModel;
 use JustBetter\AkeneoProducts\Models\ProductModel;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class UpdateProductModelTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_update_product_models(): void
     {
         Akeneo::fake();
@@ -34,6 +35,8 @@ class UpdateProductModelTest extends TestCase
         $productModel = ProductModel::query()->create([
             'code' => 'code',
             'data' => $payload,
+            'fail_count' => 1,
+            'failed_at' => now(),
         ]);
 
         /** @var UpdateProductModel $action */
@@ -54,5 +57,7 @@ class UpdateProductModelTest extends TestCase
 
         $this->assertNotNull($productModel->modified_at);
         $this->assertFalse($productModel->update);
+        $this->assertEquals(0, $productModel->fail_count);
+        $this->assertNull($productModel->failed_at);
     }
 }
