@@ -14,8 +14,7 @@ class GetLocales implements GetsLocales
 {
     public function __construct(
         protected Akeneo $akeneo
-    ) {
-    }
+    ) {}
 
     public function get(): Enumerable
     {
@@ -23,7 +22,7 @@ class GetLocales implements GetsLocales
         $ttl = now()->addDay();
 
         $locales = Cache::remember($key, $ttl, function (): array {
-            $search = new SearchBuilder();
+            $search = new SearchBuilder;
             $search->addFilter('enabled', '=', true);
 
             $locales = [];

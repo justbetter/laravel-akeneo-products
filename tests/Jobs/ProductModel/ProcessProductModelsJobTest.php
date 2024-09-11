@@ -6,10 +6,11 @@ use JustBetter\AkeneoProducts\Contracts\ProductModel\ProcessesProductModels;
 use JustBetter\AkeneoProducts\Jobs\ProductModel\ProcessProductModelsJob;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class ProcessProductModelsJobTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_process_product_models(): void
     {
         $this->mock(ProcessesProductModels::class, function (MockInterface $mock): void {

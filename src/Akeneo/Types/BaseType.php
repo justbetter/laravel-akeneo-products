@@ -13,8 +13,7 @@ abstract class BaseType
 
     public function __construct(
         protected Akeneo $akeneo
-    ) {
-    }
+    ) {}
 
     public function matches(string $type): bool
     {

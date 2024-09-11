@@ -9,10 +9,11 @@ use JustBetter\AkeneoProducts\Jobs\Product\UpdateProductJob;
 use JustBetter\AkeneoProducts\Models\Product;
 use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\Product\ProductRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ProcessProductsTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_process_products(): void
     {
         Bus::fake();

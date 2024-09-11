@@ -4,10 +4,11 @@ namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use JustBetter\AkeneoProducts\Data\ScopeData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ScopeDataTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_interact_with_scope_data(): void
     {
         $scopeData = ScopeData::of([

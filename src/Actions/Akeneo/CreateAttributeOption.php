@@ -13,8 +13,7 @@ class CreateAttributeOption implements CreatesAttributeOptions
     public function __construct(
         protected Akeneo $akeneo,
         protected GetsAttributeOptions $getsAttributeOptions
-    ) {
-    }
+    ) {}
 
     public function create(string $code, string $optionCode, array $data): AttributeOptionData
     {

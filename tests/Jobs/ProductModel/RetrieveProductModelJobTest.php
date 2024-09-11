@@ -6,10 +6,11 @@ use JustBetter\AkeneoProducts\Contracts\ProductModel\RetrievesProductModel;
 use JustBetter\AkeneoProducts\Jobs\ProductModel\RetrieveProductModelJob;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class RetrieveProductModelJobTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_retrieve_product_models(): void
     {
         $this->mock(RetrievesProductModel::class, function (MockInterface $mock): void {
@@ -23,7 +24,7 @@ class RetrieveProductModelJobTest extends TestCase
         RetrieveProductModelJob::dispatch('code');
     }
 
-    /** @test */
+    #[Test]
     public function it_has_correct_tags_and_unique_id(): void
     {
         $job = new RetrieveProductModelJob('code');

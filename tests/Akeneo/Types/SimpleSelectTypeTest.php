@@ -9,6 +9,8 @@ use JustBetter\AkeneoProducts\Data\AttributeData;
 use JustBetter\AkeneoProducts\Data\AttributeOptionData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 class SimpleSelectTypeTest extends TestCase
 {
@@ -19,7 +21,7 @@ class SimpleSelectTypeTest extends TestCase
         Akeneo::fake();
     }
 
-    /** @test */
+    #[Test]
     public function it_can_be_matched(): void
     {
         /** @var SimpleSelectType $type */
@@ -30,11 +32,8 @@ class SimpleSelectTypeTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider values
-     */
+    #[Test]
+    #[DataProvider('values')]
     public function it_can_be_formatted(mixed $input, mixed $output): void
     {
         $this->mock(ResolvesAttributeOptions::class, function (MockInterface $mock): void {

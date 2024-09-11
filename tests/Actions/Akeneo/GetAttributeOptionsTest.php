@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Http;
 use JustBetter\AkeneoClient\Client\Akeneo;
 use JustBetter\AkeneoProducts\Actions\Akeneo\GetAttributeOptions;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class GetAttributeOptionsTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_attribute_options(): void
     {
         Akeneo::fake();

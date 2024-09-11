@@ -6,6 +6,8 @@ use JustBetter\AkeneoClient\Client\Akeneo;
 use JustBetter\AkeneoProducts\Akeneo\Types\BooleanType;
 use JustBetter\AkeneoProducts\Data\AttributeData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 class BooleanTypeTest extends TestCase
 {
@@ -16,7 +18,7 @@ class BooleanTypeTest extends TestCase
         Akeneo::fake();
     }
 
-    /** @test */
+    #[Test]
     public function it_can_be_matched(): void
     {
         /** @var BooleanType $type */
@@ -27,11 +29,8 @@ class BooleanTypeTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider values
-     */
+    #[Test]
+    #[DataProvider('values')]
     public function it_can_be_formatted(mixed $input, bool $output): void
     {
         /** @var BooleanType $type */

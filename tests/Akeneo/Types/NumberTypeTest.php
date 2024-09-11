@@ -7,6 +7,8 @@ use JustBetter\AkeneoProducts\Akeneo\Types\NumberType;
 use JustBetter\AkeneoProducts\Data\AttributeData;
 use JustBetter\AkeneoProducts\Exceptions\InvalidValueException;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 class NumberTypeTest extends TestCase
 {
@@ -17,7 +19,7 @@ class NumberTypeTest extends TestCase
         Akeneo::fake();
     }
 
-    /** @test */
+    #[Test]
     public function it_can_be_matched(): void
     {
         /** @var NumberType $type */
@@ -28,11 +30,8 @@ class NumberTypeTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider decimalValues
-     */
+    #[Test]
+    #[DataProvider('decimalValues')]
     public function it_can_be_formatted_with_decimals(mixed $input, mixed $output): void
     {
         /** @var NumberType $type */
@@ -74,11 +73,8 @@ class NumberTypeTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider integerValues
-     */
+    #[Test]
+    #[DataProvider('integerValues')]
     public function it_can_be_formatted_with_integers(mixed $input, mixed $output): void
     {
         /** @var NumberType $type */
@@ -120,7 +116,7 @@ class NumberTypeTest extends TestCase
         ];
     }
 
-    /** @test */
+    #[Test]
     public function it_can_throw_exceptions(): void
     {
         $this->expectException(InvalidValueException::class);

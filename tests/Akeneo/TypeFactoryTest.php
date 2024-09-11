@@ -7,6 +7,7 @@ use JustBetter\AkeneoProducts\Akeneo\TypeFactory;
 use JustBetter\AkeneoProducts\Akeneo\Types\SimpleType;
 use JustBetter\AkeneoProducts\Exceptions\InvalidTypeException;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class TypeFactoryTest extends TestCase
 {
@@ -17,7 +18,7 @@ class TypeFactoryTest extends TestCase
         Akeneo::fake();
     }
 
-    /** @test */
+    #[Test]
     public function it_can_match_types(): void
     {
         /** @var TypeFactory $factory */
@@ -28,7 +29,7 @@ class TypeFactoryTest extends TestCase
         $this->assertTrue($baseType instanceof SimpleType);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_throw_exceptions(): void
     {
         $this->expectException(InvalidTypeException::class);

@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Http;
 use JustBetter\AkeneoClient\Client\Akeneo;
 use JustBetter\AkeneoProducts\Actions\Akeneo\GetLocales;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class GetLocalesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_get_locales(): void
     {
         Akeneo::fake();

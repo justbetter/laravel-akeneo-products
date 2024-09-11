@@ -8,10 +8,11 @@ use JustBetter\AkeneoProducts\Commands\Product\UpdateProductCommand;
 use JustBetter\AkeneoProducts\Jobs\Product\UpdateProductJob;
 use JustBetter\AkeneoProducts\Models\Product;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class UpdateProductCommandTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_dispatch_jobs(): void
     {
         Bus::fake();

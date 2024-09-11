@@ -10,8 +10,7 @@ class UpdateProduct implements UpdatesProduct
 {
     public function __construct(
         protected Akeneo $akeneo
-    ) {
-    }
+    ) {}
 
     public function update(Product $product): void
     {
@@ -19,6 +18,8 @@ class UpdateProduct implements UpdatesProduct
 
         $product->modified_at = now();
         $product->update = false;
+        $product->fail_count = 0;
+        $product->failed_at = null;
         $product->save();
     }
 

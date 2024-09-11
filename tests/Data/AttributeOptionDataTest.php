@@ -4,10 +4,11 @@ namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use JustBetter\AkeneoProducts\Data\AttributeOptionData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class AttributeOptionDataTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_interact_with_attribute_option_data(): void
     {
         $attributeOptionData = AttributeOptionData::of([

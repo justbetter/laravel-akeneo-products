@@ -5,10 +5,11 @@ namespace JustBetter\AkeneoProducts\Tests\Models;
 use JustBetter\AkeneoProducts\Models\ProductModel;
 use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\ProductModel\ProductModelRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ProductModelTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_stop_the_synchronization(): void
     {
         config()->set('akeneo-products.retrievers.product_model', ProductModelRetriever::class);
