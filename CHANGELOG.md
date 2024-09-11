@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.1.1...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.1.2...main)
+## [2.1.2](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.1.2) - 2024-09-11
+
+### What's Changed
+* Reset failed at after a succesful update by @ramonrietdijk in https://github.com/justbetter/laravel-akeneo-products/pull/7
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.1.1...2.1.2
+
 ## [2.1.1](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.1.1) - 2024-04-22
 
 ### What's Changed
