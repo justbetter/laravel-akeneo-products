@@ -5,6 +5,7 @@ namespace JustBetter\AkeneoProducts\Akeneo;
 use JustBetter\AkeneoProducts\Akeneo\Types\BaseType;
 use JustBetter\AkeneoProducts\Akeneo\Types\BooleanType;
 use JustBetter\AkeneoProducts\Akeneo\Types\MetricType;
+use JustBetter\AkeneoProducts\Akeneo\Types\MultiSelectType;
 use JustBetter\AkeneoProducts\Akeneo\Types\NumberType;
 use JustBetter\AkeneoProducts\Akeneo\Types\PriceCollectionType;
 use JustBetter\AkeneoProducts\Akeneo\Types\SimpleSelectType;
@@ -17,6 +18,7 @@ class TypeFactory
         SimpleType::class,
         BooleanType::class,
         SimpleSelectType::class,
+        MultiSelectType::class,
         MetricType::class,
         NumberType::class,
         PriceCollectionType::class,
