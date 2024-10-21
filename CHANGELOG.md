@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.1.2...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.1.3...main)
+## [2.1.3](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.1.3) - 2024-10-21
+
+### What's Changed
+* Support multiselect attributes by @VincentBean in https://github.com/justbetter/laravel-akeneo-products/pull/8
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.1.2...2.1.3
+
 ## [2.1.2](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.1.2) - 2024-09-11
 
 ### What's Changed
