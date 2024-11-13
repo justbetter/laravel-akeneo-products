@@ -50,7 +50,9 @@ class SaveProductJob implements ShouldBeUnique, ShouldQueue
         $model?->failed();
 
         activity()
-            ->when($model !== null, fn (ActivityLogger $logger): ActivityLogger => $logger->on($model))
+            ->when($model, function (ActivityLogger $logger, Product $product): ActivityLogger {
+                return $logger->on($product);
+            })
             ->useLog('error')
             ->withProperties([
                 'message' => $throwable->getMessage(),

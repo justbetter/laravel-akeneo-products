@@ -49,7 +49,9 @@ class RetrieveProductModelJob implements ShouldBeUnique, ShouldQueue
         $model?->failed();
 
         activity()
-            ->when($model !== null, fn (ActivityLogger $logger): ActivityLogger => $logger->on($model))
+            ->when($model, function (ActivityLogger $logger, ProductModel $productModel): ActivityLogger {
+                return $logger->on($productModel);
+            })
             ->useLog('error')
             ->log('Failed to retrieve the productmodel: '.$throwable->getMessage());
     }

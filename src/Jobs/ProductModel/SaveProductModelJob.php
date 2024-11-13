@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\SavesProductModel;
 use JustBetter\AkeneoProducts\Data\ProductModelData;
 use JustBetter\AkeneoProducts\Models\ProductModel;
+use JustBetter\MagentoPrices\Models\Price;
 use Spatie\Activitylog\ActivityLogger;
 use Throwable;
 
@@ -50,8 +51,10 @@ class SaveProductModelJob implements ShouldBeUnique, ShouldQueue
         $model?->failed();
 
         activity()
-            ->when($model !== null, fn (ActivityLogger $logger): ActivityLogger => $logger->on($model))
+            ->when($model, function (ActivityLogger $logger, ProductModel $productModel): ActivityLogger {
+                return $logger->on($productModel);
+            })
             ->useLog('error')
-            ->log('Failed to save the productmodel: ' . $throwable->getMessage());
+            ->log('Failed to save the productmodel: '.$throwable->getMessage());
     }
 }
