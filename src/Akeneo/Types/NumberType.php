@@ -14,7 +14,7 @@ class NumberType extends BaseType
     public function format(AttributeData $attributeData, mixed $value): float|int
     {
         if (! is_numeric($value)) {
-            throw new InvalidValueException('The given value is not numeric');
+            throw new InvalidValueException($attributeData->code(), $value);
         }
 
         return $attributeData['decimals_allowed']

@@ -9,6 +9,9 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\SavesProductModel;
 use JustBetter\AkeneoProducts\Data\ProductModelData;
+use JustBetter\AkeneoProducts\Models\ProductModel;
+use Spatie\Activitylog\ActivityLogger;
+use Throwable;
 
 class SaveProductModelJob implements ShouldBeUnique, ShouldQueue
 {
@@ -37,5 +40,18 @@ class SaveProductModelJob implements ShouldBeUnique, ShouldQueue
         return [
             $this->productModelData->code(),
         ];
+    }
+
+    public function failed(Throwable $throwable): void
+    {
+        /** @var ?ProductModel $model */
+        $model = ProductModel::query()->firstWhere('code', '=', $this->productModelData->code());
+
+        $model?->failed();
+
+        activity()
+            ->when($model !== null, fn (ActivityLogger $logger): ActivityLogger => $logger->on($model))
+            ->useLog('error')
+            ->log('Failed to save the productmodel: ' . $throwable->getMessage());
     }
 }

@@ -20,6 +20,7 @@ class UpdateProduct implements UpdatesProduct
         $product->update = false;
         $product->fail_count = 0;
         $product->failed_at = null;
+        $product->resetFailures();
         $product->save();
     }
 

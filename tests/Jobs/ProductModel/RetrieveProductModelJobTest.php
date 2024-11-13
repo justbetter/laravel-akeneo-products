@@ -2,8 +2,10 @@
 
 namespace JustBetter\AkeneoProducts\Tests\Jobs\ProductModel;
 
+use Exception;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\RetrievesProductModel;
 use JustBetter\AkeneoProducts\Jobs\ProductModel\RetrieveProductModelJob;
+use JustBetter\AkeneoProducts\Models\ProductModel;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
@@ -31,5 +33,31 @@ class RetrieveProductModelJobTest extends TestCase
 
         $this->assertEquals(['code'], $job->tags());
         $this->assertEquals('code', $job->uniqueId());
+    }
+
+    #[Test]
+    public function it_can_fail(): void
+    {
+        /** @var ProductModel $product */
+        $product = ProductModel::query()->create([
+            'code' => 'code',
+            'data' => [],
+        ]);
+
+        $job = new RetrieveProductModelJob('code');
+        $job->failed(new Exception);
+
+        $product->refresh();
+
+        $this->assertNotNull($product->failed_at);
+    }
+
+    #[Test]
+    public function it_can_fail_without_product_model(): void
+    {
+        $job = new RetrieveProductModelJob('code');
+        $job->failed(new Exception);
+
+        $this->assertTrue(true, 'No exception thrown');
     }
 }

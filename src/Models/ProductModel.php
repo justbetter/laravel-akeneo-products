@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use JustBetter\AkeneoProducts\Retrievers\ProductModel\BaseProductModelRetriever;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * @property int $id
@@ -27,6 +29,7 @@ use JustBetter\AkeneoProducts\Retrievers\ProductModel\BaseProductModelRetriever;
 class ProductModel extends Model
 {
     use SoftDeletes;
+    use LogsActivity;
 
     protected $table = 'akeneo_product_models';
 
@@ -68,5 +71,13 @@ class ProductModel extends Model
         }
 
         $this->save();
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->logOnly(['data']);
     }
 }

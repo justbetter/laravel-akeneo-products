@@ -33,6 +33,7 @@ class SaveProduct implements SavesProduct
             $product->update = $product->isDirty(['checksum']);
         }
 
+        $product->resetFailures();
         $product->save();
     }
 
