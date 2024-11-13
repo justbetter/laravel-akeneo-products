@@ -8,6 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\RetrievesProductModel;
+use JustBetter\AkeneoProducts\Models\ProductModel;
+use Spatie\Activitylog\ActivityLogger;
+use Throwable;
 
 class RetrieveProductModelJob implements ShouldBeUnique, ShouldQueue
 {
@@ -36,5 +39,20 @@ class RetrieveProductModelJob implements ShouldBeUnique, ShouldQueue
         return [
             $this->code,
         ];
+    }
+
+    public function failed(Throwable $throwable): void
+    {
+        /** @var ?ProductModel $model */
+        $model = ProductModel::query()->firstWhere('code', '=', $this->code);
+
+        $model?->failed();
+
+        activity()
+            ->when($model, function (ActivityLogger $logger, ProductModel $productModel): ActivityLogger {
+                return $logger->on($productModel);
+            })
+            ->useLog('error')
+            ->log('Failed to retrieve the productmodel: '.$throwable->getMessage());
     }
 }

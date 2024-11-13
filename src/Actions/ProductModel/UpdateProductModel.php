@@ -22,8 +22,7 @@ class UpdateProductModel implements UpdatesProductModel
 
         $productModel->modified_at = now();
         $productModel->update = false;
-        $productModel->fail_count = 0;
-        $productModel->failed_at = null;
+        $productModel->resetFailures();
         $productModel->save();
     }
 

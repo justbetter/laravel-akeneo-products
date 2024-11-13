@@ -188,6 +188,7 @@ Currently, the following attribute types are supported by this package:
 - `pim_catalog_boolean`
 - `pim_catalog_price_collection`
 - `pim_catalog_simpleselect`
+- `pim_catalog_multiselect`
 
 ## Commands
 

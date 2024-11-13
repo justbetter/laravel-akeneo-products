@@ -25,9 +25,7 @@ class PriceCollectionType extends BaseType
         }
 
         if (! isset($amount) || ! isset($currency)) {
-            throw new InvalidValueException(
-                'Value is not valid for the price collection type. Got value: '.var_export($value, true)
-            );
+            throw new InvalidValueException($attributeData->code(), $value);
         }
 
         return [
