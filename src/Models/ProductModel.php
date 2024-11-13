@@ -28,8 +28,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
  */
 class ProductModel extends Model
 {
-    use SoftDeletes;
     use LogsActivity;
+    use SoftDeletes;
 
     protected $table = 'akeneo_product_models';
 
@@ -71,6 +71,13 @@ class ProductModel extends Model
         }
 
         $this->save();
+    }
+
+    public function resetFailures(): void
+    {
+        $this->synchronize = true;
+        $this->fail_count = 0;
+        $this->failed_at = null;
     }
 
     public function getActivitylogOptions(): LogOptions

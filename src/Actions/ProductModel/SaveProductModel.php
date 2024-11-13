@@ -33,6 +33,7 @@ class SaveProductModel implements SavesProductModel
             $productModel->update = $productModel->isDirty(['checksum']);
         }
 
+        $productModel->resetFailures();
         $productModel->save();
     }
 

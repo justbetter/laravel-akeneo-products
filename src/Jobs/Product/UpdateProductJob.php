@@ -52,6 +52,6 @@ class UpdateProductJob implements ShouldBeUnique, ShouldQueue
             ->withProperties([
                 'code' => $throwable->getCode(),
             ])
-            ->log('Failed to update product in Akeneo: ' . $throwable->getMessage());
+            ->log('Failed to update product in Akeneo: '.$throwable->getMessage());
     }
 }

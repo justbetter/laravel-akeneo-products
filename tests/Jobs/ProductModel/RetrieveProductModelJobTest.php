@@ -38,8 +38,8 @@ class RetrieveProductModelJobTest extends TestCase
     #[Test]
     public function it_can_fail(): void
     {
-        /** @var ProductModel $product */
-        $product = ProductModel::query()->create([
+        /** @var ProductModel $productModel */
+        $productModel = ProductModel::query()->create([
             'code' => 'code',
             'data' => [],
         ]);
@@ -47,9 +47,9 @@ class RetrieveProductModelJobTest extends TestCase
         $job = new RetrieveProductModelJob('code');
         $job->failed(new Exception);
 
-        $product->refresh();
+        $productModel->refresh();
 
-        $this->assertNotNull($product->failed_at);
+        $this->assertNotNull($productModel->failed_at);
     }
 
     #[Test]

@@ -6,7 +6,6 @@ use Exception;
 use JustBetter\AkeneoProducts\Contracts\Product\SavesProduct;
 use JustBetter\AkeneoProducts\Data\ProductData;
 use JustBetter\AkeneoProducts\Jobs\Product\SaveProductJob;
-use JustBetter\AkeneoProducts\Jobs\Product\UpdateProductJob;
 use JustBetter\AkeneoProducts\Models\Product;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;

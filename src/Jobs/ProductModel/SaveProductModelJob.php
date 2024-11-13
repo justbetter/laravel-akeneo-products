@@ -10,7 +10,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\SavesProductModel;
 use JustBetter\AkeneoProducts\Data\ProductModelData;
 use JustBetter\AkeneoProducts\Models\ProductModel;
-use JustBetter\MagentoPrices\Models\Price;
 use Spatie\Activitylog\ActivityLogger;
 use Throwable;
 

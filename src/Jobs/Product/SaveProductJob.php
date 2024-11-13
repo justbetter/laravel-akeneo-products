@@ -55,9 +55,8 @@ class SaveProductJob implements ShouldBeUnique, ShouldQueue
             })
             ->useLog('error')
             ->withProperties([
-                'message' => $throwable->getMessage(),
                 'data' => $this->productData->toArray(),
             ])
-            ->log('Failed to save the product data');
+            ->log('Failed to save the product data: '.$throwable->getMessage());
     }
 }
