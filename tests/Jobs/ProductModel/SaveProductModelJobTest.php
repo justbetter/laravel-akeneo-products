@@ -70,7 +70,7 @@ class SaveProductModelJobTest extends TestCase
             'data' => [],
         ]);
 
-        $productData = ProductModelData::of([
+        $productModelData = ProductModelData::of([
             'code' => 'code',
             'values' => [
                 'name' => [
@@ -83,7 +83,7 @@ class SaveProductModelJobTest extends TestCase
             ],
         ]);
 
-        $job = new SaveProductModelJob($productData);
+        $job = new SaveProductModelJob($productModelData);
         $job->failed(new Exception);
 
         $product->refresh();
@@ -94,7 +94,7 @@ class SaveProductModelJobTest extends TestCase
     #[Test]
     public function it_can_fail_without_product_model(): void
     {
-        $productData = ProductModelData::of([
+        $productModelData = ProductModelData::of([
             'code' => 'code',
             'values' => [
                 'name' => [
@@ -107,7 +107,7 @@ class SaveProductModelJobTest extends TestCase
             ],
         ]);
 
-        $job = new SaveProductModelJob($productData);
+        $job = new SaveProductModelJob($productModelData);
         $job->failed(new Exception);
 
         $this->assertTrue(true, 'No exception thrown');
