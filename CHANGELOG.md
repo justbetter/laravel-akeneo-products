@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.2.0...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.3.0...main)
+## [2.3.0](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.3.0) - 2025-02-17
+
+### What's Changed
+* Laravel 12 support by @VincentBean in https://github.com/justbetter/laravel-akeneo-products/pull/10
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.2.0...2.3.0
+
 ## [2.2.0](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.2.0) - 2024-11-13
 
 ### What's Changed
