@@ -55,9 +55,9 @@ class RetrieveProductJobTest extends TestCase
     #[Test]
     public function it_can_fail_without_product_model(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $job = new RetrieveProductJob('identifier');
         $job->failed(new Exception);
-
-        $this->assertTrue(true, 'No exception thrown');
     }
 }

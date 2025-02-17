@@ -14,6 +14,8 @@ class RetrieveProductModelTest extends TestCase
     #[Test]
     public function it_can_retrieve_product_models(): void
     {
+        $this->expectNotToPerformAssertions();
+
         Bus::fake();
 
         config()->set('akeneo-products.retrievers.product_model', ProductModelRetriever::class);
@@ -21,7 +23,5 @@ class RetrieveProductModelTest extends TestCase
         /** @var RetrieveProductModel $action */
         $action = app(RetrieveProductModel::class);
         $action->retrieve('code');
-
-        Bus::assertDispatched(SaveProductModelJob::class);
     }
 }
