@@ -94,6 +94,8 @@ class SaveProductJobTest extends TestCase
     #[Test]
     public function it_can_fail_without_product_model(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $productData = ProductData::of([
             'identifier' => 'identifier',
             'values' => [
@@ -109,7 +111,5 @@ class SaveProductJobTest extends TestCase
 
         $job = new SaveProductJob($productData);
         $job->failed(new Exception);
-
-        $this->assertTrue(true, 'No exception thrown');
     }
 }

@@ -9,12 +9,10 @@ jobs:
             fail-fast: true
             matrix:
                 os: [ubuntu-latest]
-                php: [8.3]
-                laravel: [10.*, 11.*]
+                php: [8.4]
+                laravel: [11.*]
                 stability: [prefer-stable]
                 include:
-                    - laravel: 10.*
-                      testbench: 8.*
                     - laravel: 11.*
                       testbench: 9.*
 
@@ -32,6 +30,8 @@ jobs:
                   coverage: none
 
             - name: Install dependencies
+              env:
+                COMPOSER_AUTH: '{"http-basic":{"nova.laravel.com":{"username":"${{secrets.NOVA_USERNAME}}","password":"${{secrets.NOVA_PASSWORD}}"}}}'
               run: |
                   composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
                   composer update --${{ matrix.stability }} --prefer-dist --no-interaction
