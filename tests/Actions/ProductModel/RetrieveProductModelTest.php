@@ -4,7 +4,6 @@ namespace JustBetter\AkeneoProducts\Tests\Actions\ProductModel;
 
 use Illuminate\Support\Facades\Bus;
 use JustBetter\AkeneoProducts\Actions\ProductModel\RetrieveProductModel;
-use JustBetter\AkeneoProducts\Jobs\ProductModel\SaveProductModelJob;
 use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\ProductModel\ProductModelRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
