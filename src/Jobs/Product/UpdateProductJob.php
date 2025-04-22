@@ -46,11 +46,16 @@ class UpdateProductJob implements ShouldBeUnique, ShouldQueue
     {
         $this->product->failed();
 
+        $responseErrors = ($throwable instanceof \Akeneo\Pim\ApiClient\Exception\UnprocessableEntityHttpException
+            ? $throwable->getResponseErrors()
+            : null) ?? [];
+
         activity()
             ->on($this->product)
             ->useLog('error')
             ->withProperties([
                 'code' => $throwable->getCode(),
+                'response_errors' =>  $responseErrors
             ])
             ->log('Failed to update product in Akeneo: '.$throwable->getMessage());
     }
