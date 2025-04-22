@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\UpdatesProductModel;
 use JustBetter\AkeneoProducts\Models\ProductModel;
+use Akeneo\Pim\ApiClient\Exception\UnprocessableEntityHttpException;
 use Throwable;
 
 class UpdateProductModelJob implements ShouldBeUnique, ShouldQueue
@@ -46,9 +47,9 @@ class UpdateProductModelJob implements ShouldBeUnique, ShouldQueue
     {
         $this->productModel->failed();
 
-        $responseErrors = ($throwable instanceof \Akeneo\Pim\ApiClient\Exception\UnprocessableEntityHttpException
-            ? $throwable->getResponseErrors()
-            : null) ?? [];
+        $responseErrors = $throwable instanceof UnprocessableEntityHttpException
+            ? $throwable->getResponseErrors() // @codeCoverageIgnore
+            : [];
 
         activity()
             ->on($this->productModel)
