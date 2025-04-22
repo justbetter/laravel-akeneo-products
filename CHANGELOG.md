@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.3.0...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.3.1...main)
+## [2.3.1](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.3.1) - 2025-04-22
+
+### What's Changed
+* Returns the errors of the response if there are any by @joachimVT in https://github.com/justbetter/laravel-akeneo-products/pull/11
+
+### New Contributors
+* @joachimVT made their first contribution in https://github.com/justbetter/laravel-akeneo-products/pull/11
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.3.0...2.3.1
+
 ## [2.3.0](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.3.0) - 2025-02-17
 
 ### What's Changed
