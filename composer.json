@@ -45,14 +45,14 @@
         "test": "phpunit",
         "analyse": "phpstan --memory-limit=256M",
         "style": "pint --test",
+        "fix-style": "pint",
+        "coverage": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage --min=100",
         "quality": [
             "@style",
             "@analyse",
             "@test",
             "@coverage"
-        ],
-        "fix-style": "pint",
-        "coverage": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage --min=100"
+        ]
     },
     "config": {
         "sort-packages": true,
