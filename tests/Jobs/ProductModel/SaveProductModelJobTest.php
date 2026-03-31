@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Jobs\ProductModel;
 
 use Exception;
+use Illuminate\Support\Carbon;
 use JustBetter\AkeneoProducts\Contracts\ProductModel\SavesProductModel;
 use JustBetter\AkeneoProducts\Data\ProductModelData;
 use JustBetter\AkeneoProducts\Jobs\ProductModel\SaveProductModelJob;
@@ -11,7 +14,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
 
-class SaveProductModelJobTest extends TestCase
+final class SaveProductModelJobTest extends TestCase
 {
     #[Test]
     public function it_can_save_product_models(): void
@@ -57,8 +60,8 @@ class SaveProductModelJobTest extends TestCase
 
         $job = new SaveProductModelJob($productModelData);
 
-        $this->assertEquals(['code'], $job->tags());
-        $this->assertEquals('code', $job->uniqueId());
+        $this->assertSame(['code'], $job->tags());
+        $this->assertSame('code', $job->uniqueId());
     }
 
     #[Test]
@@ -88,7 +91,7 @@ class SaveProductModelJobTest extends TestCase
 
         $product->refresh();
 
-        $this->assertNotNull($product->failed_at);
+        $this->assertInstanceOf(Carbon::class, $product->failed_at);
     }
 
     #[Test]

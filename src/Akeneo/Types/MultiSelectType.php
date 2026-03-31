@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Akeneo\Types;
 
 use JustBetter\AkeneoProducts\Contracts\Akeneo\ResolvesAttributeOptions;
@@ -16,7 +18,7 @@ class MultiSelectType extends BaseType
         if (is_array($value)) {
             [$code, $label] = $value;
         } else {
-            $code = preg_replace('/([^A-Z0-9_]+)/i', '_', $value);
+            $code = preg_replace('/([^A-Z0-9_]+)/i', '_', (string) $value);
             $label = $value;
         }
 

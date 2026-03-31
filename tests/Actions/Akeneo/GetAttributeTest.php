@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Facades\Http;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Actions\Akeneo\GetAttribute;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class GetAttributeTest extends TestCase
+final class GetAttributeTest extends TestCase
 {
     #[Test]
     public function it_can_get_attributes(): void

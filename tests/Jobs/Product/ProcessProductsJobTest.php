@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Jobs\Product;
 
 use JustBetter\AkeneoProducts\Contracts\Product\ProcessesProducts;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
 
-class ProcessProductsJobTest extends TestCase
+final class ProcessProductsJobTest extends TestCase
 {
     #[Test]
     public function it_can_process_products(): void

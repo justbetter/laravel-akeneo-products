@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Facades\Http;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Actions\Akeneo\GetAttributeOptions;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class GetAttributeOptionsTest extends TestCase
+final class GetAttributeOptionsTest extends TestCase
 {
     #[Test]
     public function it_can_attribute_options(): void
@@ -58,6 +60,6 @@ class GetAttributeOptionsTest extends TestCase
 
         $attributeOptions = $action->get('code');
 
-        $this->assertEquals(3, $attributeOptions->count());
+        $this->assertCount(3, $attributeOptions);
     }
 }

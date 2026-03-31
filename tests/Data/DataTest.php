@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use Illuminate\Validation\ValidationException;
@@ -7,7 +9,7 @@ use JustBetter\AkeneoProducts\Data\ProductData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class DataTest extends TestCase
+final class DataTest extends TestCase
 {
     #[Test]
     public function it_can_interact_with_data(): void
@@ -25,12 +27,12 @@ class DataTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(isset($productData['identifier']));
+        $this->assertArrayHasKey('identifier', $productData);
         $this->assertEquals('identifier', $productData['identifier']);
 
         $productData['identifier'] = 'update';
 
-        $this->assertEquals('update', $productData['identifier']);
+        $this->assertSame('update', $productData['identifier']);
 
         unset($productData['identifier']);
 

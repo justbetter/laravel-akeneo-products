@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Models;
 
+use Illuminate\Support\Carbon;
 use JustBetter\AkeneoProducts\Models\ProductModel;
 use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\ProductModel\ProductModelRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class ProductModelTest extends TestCase
+final class ProductModelTest extends TestCase
 {
     #[Test]
     public function it_can_stop_the_synchronization(): void
@@ -23,13 +26,13 @@ class ProductModelTest extends TestCase
 
         $productModel->failed();
 
-        $this->assertNotNull($productModel->failed_at);
+        $this->assertInstanceOf(Carbon::class, $productModel->failed_at);
         $this->assertEquals(1, $productModel->fail_count);
         $this->assertTrue($productModel->synchronize);
 
         $productModel->failed();
 
-        $this->assertNotNull($productModel->failed_at);
+        $this->assertInstanceOf(Carbon::class, $productModel->failed_at);
         $this->assertEquals(2, $productModel->fail_count);
         $this->assertFalse($productModel->synchronize);
     }

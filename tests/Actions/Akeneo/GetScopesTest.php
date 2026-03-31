@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Facades\Http;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Actions\Akeneo\GetScopes;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class GetScopesTest extends TestCase
+final class GetScopesTest extends TestCase
 {
     #[Test]
     public function it_can_get_scopes(): void
@@ -52,6 +54,6 @@ class GetScopesTest extends TestCase
 
         $scopes = $action->get();
 
-        $this->assertEquals(3, $scopes->count());
+        $this->assertCount(3, $scopes);
     }
 }

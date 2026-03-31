@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
@@ -27,6 +29,7 @@ use JustBetter\AkeneoProducts\Commands\ProductModel\UpdateProductModelCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
+    #[\Override]
     public function register(): void
     {
         $this

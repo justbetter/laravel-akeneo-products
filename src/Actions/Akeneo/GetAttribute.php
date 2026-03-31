@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Actions\Akeneo;
 
 use Illuminate\Support\Facades\Cache;
@@ -15,7 +17,7 @@ class GetAttribute implements GetsAttributes
 
     public function get(string $code): AttributeData
     {
-        $key = "akeneo-products:attribute:$code";
+        $key = 'akeneo-products:attribute:'.$code;
         $ttl = now()->addDay();
 
         $data = Cache::remember($key, $ttl, fn (): array => $this->akeneo->getAttributeApi()->get($code));

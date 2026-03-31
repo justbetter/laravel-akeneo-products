@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Product;
 
 use Illuminate\Support\Facades\Bus;
@@ -9,7 +11,7 @@ use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\Product\ProductRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class RetrieveProductTest extends TestCase
+final class RetrieveProductTest extends TestCase
 {
     #[Test]
     public function it_can_retrieve_products(): void

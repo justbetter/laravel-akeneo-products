@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Actions\Akeneo;
 
 use JustBetter\AkeneoProducts\Contracts\Akeneo\CreatesAttributeOptions;
@@ -21,9 +23,7 @@ class ResolveAttributeOption implements ResolvesAttributeOptions
     {
         $options = $this->getsAttributeOptions->get($code);
 
-        $currentOption = $options->first(function (AttributeOptionData $data) use ($optionCode): bool {
-            return strtolower($data->code()) === strtolower($optionCode);
-        });
+        $currentOption = $options->first(fn (AttributeOptionData $data): bool => strtolower($data->code()) === strtolower($optionCode));
 
         if ($currentOption !== null) {
             return $currentOption;
@@ -31,7 +31,7 @@ class ResolveAttributeOption implements ResolvesAttributeOptions
 
         foreach ($options as $option) {
             foreach ($option->labels() as $optionLabel) {
-                if (strtolower($label) === strtolower($optionLabel)) {
+                if (strtolower($label) === strtolower((string) $optionLabel)) {
                     return $option;
                 }
             }

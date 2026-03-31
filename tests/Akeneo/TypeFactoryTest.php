@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Akeneo;
 
 use JustBetter\AkeneoClient\Client\Akeneo;
@@ -9,7 +11,7 @@ use JustBetter\AkeneoProducts\Exceptions\InvalidTypeException;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class TypeFactoryTest extends TestCase
+final class TypeFactoryTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -26,7 +28,7 @@ class TypeFactoryTest extends TestCase
 
         $baseType = $factory->for('pim_catalog_text');
 
-        $this->assertTrue($baseType instanceof SimpleType);
+        $this->assertInstanceOf(SimpleType::class, $baseType);
     }
 
     #[Test]

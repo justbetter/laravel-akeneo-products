@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use JustBetter\AkeneoProducts\Data\ProductModelData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class ProductModelDataTest extends TestCase
+final class ProductModelDataTest extends TestCase
 {
     #[Test]
     public function it_can_interact_with_product_model_data(): void
@@ -28,10 +30,10 @@ class ProductModelDataTest extends TestCase
             ],
         ]);
 
-        $this->assertEquals('code', $productModelData->code());
-        $this->assertEquals('family', $productModelData->family());
-        $this->assertEquals(['category'], $productModelData->categories());
-        $this->assertEquals([
+        $this->assertSame('code', $productModelData->code());
+        $this->assertSame('family', $productModelData->family());
+        $this->assertSame(['category'], $productModelData->categories());
+        $this->assertSame([
             'name' => [
                 [
                     'locale' => 'nl_NL',

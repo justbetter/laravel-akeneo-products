@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Http\Client\Request;
@@ -13,7 +15,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
 
-class CreateAttributeOptionTest extends TestCase
+final class CreateAttributeOptionTest extends TestCase
 {
     #[Test]
     public function it_can_create_attribute_options(): void

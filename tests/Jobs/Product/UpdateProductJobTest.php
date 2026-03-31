@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Jobs\Product;
 
 use Exception;
+use Illuminate\Support\Carbon;
 use JustBetter\AkeneoProducts\Contracts\Product\UpdatesProduct;
 use JustBetter\AkeneoProducts\Jobs\Product\UpdateProductJob;
 use JustBetter\AkeneoProducts\Models\Product;
@@ -10,7 +13,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
 
-class UpdateProductJobTest extends TestCase
+final class UpdateProductJobTest extends TestCase
 {
     #[Test]
     public function it_can_update_products(): void
@@ -43,7 +46,7 @@ class UpdateProductJobTest extends TestCase
         $job = new UpdateProductJob($product);
         $job->failed(new Exception);
 
-        $this->assertNotNull($product->failed_at);
+        $this->assertInstanceOf(Carbon::class, $product->failed_at);
     }
 
     #[Test]
@@ -57,7 +60,7 @@ class UpdateProductJobTest extends TestCase
 
         $job = new UpdateProductJob($product);
 
-        $this->assertEquals(['identifier'], $job->tags());
-        $this->assertEquals('identifier', $job->uniqueId());
+        $this->assertSame(['identifier'], $job->tags());
+        $this->assertSame('identifier', $job->uniqueId());
     }
 }

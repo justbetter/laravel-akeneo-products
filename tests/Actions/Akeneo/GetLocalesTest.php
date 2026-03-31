@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Facades\Http;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Actions\Akeneo\GetLocales;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class GetLocalesTest extends TestCase
+final class GetLocalesTest extends TestCase
 {
     #[Test]
     public function it_can_get_locales(): void
@@ -42,6 +44,6 @@ class GetLocalesTest extends TestCase
 
         $scopes = $action->get();
 
-        $this->assertEquals(2, $scopes->count());
+        $this->assertCount(2, $scopes);
     }
 }

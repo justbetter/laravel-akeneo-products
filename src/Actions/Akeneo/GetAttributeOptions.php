@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Actions\Akeneo;
 
 use Illuminate\Support\Collection;
@@ -36,7 +38,7 @@ class GetAttributeOptions implements GetsAttributeOptions
 
     public static function cacheKey(string $code): string
     {
-        return "akeneo-products:attribute-options:$code";
+        return 'akeneo-products:attribute-options:'.$code;
     }
 
     public static function bind(): void
