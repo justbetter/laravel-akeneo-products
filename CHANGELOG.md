@@ -1,6 +1,15 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.3.1...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.4.0...main)
+## [2.4.0](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.4.0) - 2026-04-13
+
+### What's Changed
+* Adjust workflows by @VincentBean in https://github.com/justbetter/laravel-akeneo-products/pull/12
+* Laravel 13 support by @VincentBean in https://github.com/justbetter/laravel-akeneo-products/pull/13
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.3.1...2.4.0
+
 ## [2.3.1](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.3.1) - 2025-04-22
 
 ### What's Changed
