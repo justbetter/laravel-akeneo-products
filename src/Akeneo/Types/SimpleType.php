@@ -15,6 +15,6 @@ class SimpleType extends BaseType
 
     public function format(AttributeData $attributeData, mixed $value): string
     {
-        return $value;
+        return (string) $value;
     }
 }
