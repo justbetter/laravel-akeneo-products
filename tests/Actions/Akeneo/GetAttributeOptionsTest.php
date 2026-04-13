@@ -18,7 +18,7 @@ final class GetAttributeOptionsTest extends TestCase
         Akeneo::fake();
 
         Http::fake([
-            'akeneo/api/rest/v1/attributes/code/options?*' => Http::response([
+            'akeneo/api/rest/v1/attributes/code/options' => Http::response([
                 '_links' => [
                     'first' => [
                         'href' => 'akeneo/api/rest/v1/attributes/code/options',
@@ -53,7 +53,7 @@ final class GetAttributeOptionsTest extends TestCase
                     ],
                 ],
             ]),
-        ]);
+        ])->preventStrayRequests();
 
         /** @var GetAttributeOptions $action */
         $action = app(GetAttributeOptions::class);

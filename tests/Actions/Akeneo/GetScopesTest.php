@@ -18,7 +18,7 @@ final class GetScopesTest extends TestCase
         Akeneo::fake();
 
         Http::fake([
-            'akeneo/api/rest/v1/channels?*' => Http::response([
+            'akeneo/api/rest/v1/channels' => Http::response([
                 '_links' => [
                     'first' => [
                         'href' => 'akeneo/api/rest/v1/channels',
@@ -47,7 +47,7 @@ final class GetScopesTest extends TestCase
                     ],
                 ],
             ]),
-        ]);
+        ])->preventStrayRequests();
 
         /** @var GetScopes $action */
         $action = app(GetScopes::class);

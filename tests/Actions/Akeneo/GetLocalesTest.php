@@ -18,7 +18,7 @@ final class GetLocalesTest extends TestCase
         Akeneo::fake();
 
         Http::fake([
-            'akeneo/api/rest/v1/locales?*' => Http::response([
+            'akeneo/api/rest/v1/locales' => Http::response([
                 '_links' => [
                     'first' => [
                         'href' => 'akeneo/api/rest/v1/locales',
@@ -37,7 +37,7 @@ final class GetLocalesTest extends TestCase
                     ],
                 ],
             ]),
-        ]);
+        ])->preventStrayRequests();
 
         /** @var GetLocales $action */
         $action = app(GetLocales::class);
