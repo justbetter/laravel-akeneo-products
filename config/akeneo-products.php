@@ -1,5 +1,8 @@
 <?php
 
+use JustBetter\AkeneoProducts\Retrievers\Product\ProductRetriever;
+use JustBetter\AkeneoProducts\Retrievers\ProductModel\ProductModelRetriever;
+
 return [
 
     /* Determines which queue jobs should be dispatched on. */
@@ -9,9 +12,9 @@ return [
     'retrievers' => [
 
         /* Class responsible to retrieve the products from. */
-        'product' => \JustBetter\AkeneoProducts\Retrievers\Product\ProductRetriever::class,
+        'product' => ProductRetriever::class,
 
         /* Class responsible to retrieve the product models from. */
-        'product_model' => \JustBetter\AkeneoProducts\Retrievers\ProductModel\ProductModelRetriever::class,
+        'product_model' => ProductModelRetriever::class,
     ],
 ];

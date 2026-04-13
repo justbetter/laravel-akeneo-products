@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Jobs\ProductModel;
 
 use Illuminate\Bus\Queueable;
@@ -49,9 +51,7 @@ class RetrieveProductModelJob implements ShouldBeUnique, ShouldQueue
         $model?->failed();
 
         activity()
-            ->when($model, function (ActivityLogger $logger, ProductModel $productModel): ActivityLogger {
-                return $logger->on($productModel);
-            })
+            ->when($model, fn (ActivityLogger $logger, ProductModel $productModel): ActivityLogger => $logger->on($productModel))
             ->useLog('error')
             ->log('Failed to retrieve the productmodel: '.$throwable->getMessage());
     }

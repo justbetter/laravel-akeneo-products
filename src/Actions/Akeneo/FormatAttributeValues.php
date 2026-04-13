@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Actions\Akeneo;
 
 use JustBetter\AkeneoProducts\Akeneo\TypeFactory;
@@ -43,13 +45,11 @@ class FormatAttributeValues implements FormatsAttributeValues
                     $values[] = $this->value($data, $scope->code(), $locale);
                 }
             }
+        } elseif (! $attribute->localizable()) {
+            $values[] = $this->value($data);
         } else {
-            if (! $attribute->localizable()) {
-                $values[] = $this->value($data);
-            } else {
-                foreach ($locales as $locale) {
-                    $values[] = $this->value($data, null, $locale->code());
-                }
+            foreach ($locales as $locale) {
+                $values[] = $this->value($data, null, $locale->code());
             }
         }
 

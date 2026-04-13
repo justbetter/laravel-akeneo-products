@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Commands\Product;
 
 use Illuminate\Support\Facades\Bus;
@@ -9,7 +11,7 @@ use JustBetter\AkeneoProducts\Jobs\Product\ProcessProductsJob;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class ProcessProductsCommandTest extends TestCase
+final class ProcessProductsCommandTest extends TestCase
 {
     #[Test]
     public function it_can_dispatch_jobs(): void

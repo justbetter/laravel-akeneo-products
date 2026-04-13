@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Facades\Http;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Actions\Akeneo\GetScopes;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class GetScopesTest extends TestCase
+final class GetScopesTest extends TestCase
 {
     #[Test]
     public function it_can_get_scopes(): void
@@ -16,7 +18,7 @@ class GetScopesTest extends TestCase
         Akeneo::fake();
 
         Http::fake([
-            'akeneo/api/rest/v1/channels?*' => Http::response([
+            'akeneo/api/rest/v1/channels' => Http::response([
                 '_links' => [
                     'first' => [
                         'href' => 'akeneo/api/rest/v1/channels',
@@ -45,13 +47,13 @@ class GetScopesTest extends TestCase
                     ],
                 ],
             ]),
-        ]);
+        ])->preventStrayRequests();
 
         /** @var GetScopes $action */
         $action = app(GetScopes::class);
 
         $scopes = $action->get();
 
-        $this->assertEquals(3, $scopes->count());
+        $this->assertCount(3, $scopes);
     }
 }

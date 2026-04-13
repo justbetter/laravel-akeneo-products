@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Actions\Akeneo;
 
 use Akeneo\Pim\ApiClient\Search\SearchBuilder;

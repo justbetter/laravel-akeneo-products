@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use JustBetter\AkeneoProducts\Data\ScopeData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class ScopeDataTest extends TestCase
+final class ScopeDataTest extends TestCase
 {
     #[Test]
     public function it_can_interact_with_scope_data(): void
@@ -18,7 +20,7 @@ class ScopeDataTest extends TestCase
             ],
         ]);
 
-        $this->assertEquals('ecommerce', $scopeData->code());
-        $this->assertEquals(['nl_NL'], $scopeData->locales());
+        $this->assertSame('ecommerce', $scopeData->code());
+        $this->assertSame(['nl_NL'], $scopeData->locales());
     }
 }

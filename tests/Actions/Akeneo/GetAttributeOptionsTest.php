@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Facades\Http;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Actions\Akeneo\GetAttributeOptions;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class GetAttributeOptionsTest extends TestCase
+final class GetAttributeOptionsTest extends TestCase
 {
     #[Test]
     public function it_can_attribute_options(): void
@@ -16,7 +18,7 @@ class GetAttributeOptionsTest extends TestCase
         Akeneo::fake();
 
         Http::fake([
-            'akeneo/api/rest/v1/attributes/code/options?*' => Http::response([
+            'akeneo/api/rest/v1/attributes/code/options' => Http::response([
                 '_links' => [
                     'first' => [
                         'href' => 'akeneo/api/rest/v1/attributes/code/options',
@@ -51,13 +53,13 @@ class GetAttributeOptionsTest extends TestCase
                     ],
                 ],
             ]),
-        ]);
+        ])->preventStrayRequests();
 
         /** @var GetAttributeOptions $action */
         $action = app(GetAttributeOptions::class);
 
         $attributeOptions = $action->get('code');
 
-        $this->assertEquals(3, $attributeOptions->count());
+        $this->assertCount(3, $attributeOptions);
     }
 }

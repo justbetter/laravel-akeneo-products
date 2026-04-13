@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Collection;
@@ -14,7 +16,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
 
-class ResolveAttributeOptionTest extends TestCase
+final class ResolveAttributeOptionTest extends TestCase
 {
     #[Test]
     public function it_can_resolve_attribute_options_using_code(): void
@@ -130,14 +132,12 @@ class ResolveAttributeOptionTest extends TestCase
             $mock
                 ->shouldReceive('create')
                 ->once()
-                ->andReturnUsing(function (string $code, string $optionCode, array $labels): AttributeOptionData {
-                    return AttributeOptionData::of([
-                        'code' => $optionCode,
-                        'attribute' => $code,
-                        'sort_order' => 0,
-                        'labels' => $labels,
-                    ]);
-                });
+                ->andReturnUsing(fn (string $code, string $optionCode, array $labels): AttributeOptionData => AttributeOptionData::of([
+                    'code' => $optionCode,
+                    'attribute' => $code,
+                    'sort_order' => 0,
+                    'labels' => $labels,
+                ]));
         });
 
         /** @var ResolveAttributeOption $action */

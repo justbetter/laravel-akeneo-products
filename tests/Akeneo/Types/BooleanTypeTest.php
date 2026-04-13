@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Akeneo\Types;
 
 use JustBetter\AkeneoClient\Client\Akeneo;
@@ -9,7 +11,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 
-class BooleanTypeTest extends TestCase
+final class BooleanTypeTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -49,33 +51,31 @@ class BooleanTypeTest extends TestCase
         $this->assertEquals($output, $value);
     }
 
-    public static function values(): array
+    public static function values(): \Iterator
     {
-        return [
-            [
-                'input' => 0,
-                'output' => false,
-            ],
-            [
-                'input' => 1,
-                'output' => true,
-            ],
-            [
-                'input' => '',
-                'output' => false,
-            ],
-            [
-                'input' => null,
-                'output' => false,
-            ],
-            [
-                'input' => false,
-                'output' => false,
-            ],
-            [
-                'input' => true,
-                'output' => true,
-            ],
+        yield [
+            'input' => 0,
+            'output' => false,
+        ];
+        yield [
+            'input' => 1,
+            'output' => true,
+        ];
+        yield [
+            'input' => '',
+            'output' => false,
+        ];
+        yield [
+            'input' => null,
+            'output' => false,
+        ];
+        yield [
+            'input' => false,
+            'output' => false,
+        ];
+        yield [
+            'input' => true,
+            'output' => true,
         ];
     }
 }

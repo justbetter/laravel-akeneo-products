@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Actions\Product;
 
 use JustBetter\AkeneoProducts\Contracts\Product\RetrievesProduct;
+use JustBetter\AkeneoProducts\Data\ProductData;
 use JustBetter\AkeneoProducts\Jobs\Product\SaveProductJob;
 use JustBetter\AkeneoProducts\Retrievers\Product\BaseProductRetriever;
 
@@ -12,7 +15,7 @@ class RetrieveProduct implements RetrievesProduct
     {
         $product = BaseProductRetriever::current()->retrieve($identifier);
 
-        if ($product !== null) {
+        if ($product instanceof ProductData) {
             SaveProductJob::dispatch($product);
         }
     }

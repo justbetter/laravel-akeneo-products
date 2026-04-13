@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Akeneo\Types;
 
 use JustBetter\AkeneoClient\Client\Akeneo;
@@ -10,7 +12,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 
-class NumberTypeTest extends TestCase
+final class NumberTypeTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -51,25 +53,23 @@ class NumberTypeTest extends TestCase
         $this->assertEquals($output, $value);
     }
 
-    public static function decimalValues(): array
+    public static function decimalValues(): \Iterator
     {
-        return [
-            [
-                'input' => 1.000,
-                'output' => 1.000,
-            ],
-            [
-                'input' => 1.925,
-                'output' => 1.925,
-            ],
-            [
-                'input' => '5',
-                'output' => 5,
-            ],
-            [
-                'input' => '10.0',
-                'output' => 10.0,
-            ],
+        yield [
+            'input' => 1.000,
+            'output' => 1.000,
+        ];
+        yield [
+            'input' => 1.925,
+            'output' => 1.925,
+        ];
+        yield [
+            'input' => '5',
+            'output' => 5,
+        ];
+        yield [
+            'input' => '10.0',
+            'output' => 10.0,
         ];
     }
 
@@ -94,25 +94,23 @@ class NumberTypeTest extends TestCase
         $this->assertEquals($output, $value);
     }
 
-    public static function integerValues(): array
+    public static function integerValues(): \Iterator
     {
-        return [
-            [
-                'input' => 1.000,
-                'output' => 1,
-            ],
-            [
-                'input' => 1.925,
-                'output' => 1,
-            ],
-            [
-                'input' => '5',
-                'output' => 5,
-            ],
-            [
-                'input' => '10.0',
-                'output' => 10,
-            ],
+        yield [
+            'input' => 1.000,
+            'output' => 1,
+        ];
+        yield [
+            'input' => 1.925,
+            'output' => 1,
+        ];
+        yield [
+            'input' => '5',
+            'output' => 5,
+        ];
+        yield [
+            'input' => '10.0',
+            'output' => 10,
         ];
     }
 

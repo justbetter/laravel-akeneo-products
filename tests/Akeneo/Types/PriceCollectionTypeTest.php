@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Akeneo\Types;
 
 use JustBetter\AkeneoClient\Client\Akeneo;
@@ -11,7 +13,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use stdClass;
 
-class PriceCollectionTypeTest extends TestCase
+final class PriceCollectionTypeTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -70,34 +72,32 @@ class PriceCollectionTypeTest extends TestCase
         $this->assertEquals($output, $value);
     }
 
-    public static function values(): array
+    public static function values(): \Iterator
     {
-        return [
-            'default_currency_string' => [
-                'input' => '10.00',
-                'output' => [
-                    [
-                        'amount' => '10.00',
-                        'currency' => 'EUR',
-                    ],
+        yield 'default_currency_string' => [
+            'input' => '10.00',
+            'output' => [
+                [
+                    'amount' => '10.00',
+                    'currency' => 'EUR',
                 ],
             ],
-            'default_currency_float' => [
-                'input' => 10.00,
-                'output' => [
-                    [
-                        'amount' => '10.00',
-                        'currency' => 'EUR',
-                    ],
+        ];
+        yield 'default_currency_float' => [
+            'input' => 10.00,
+            'output' => [
+                [
+                    'amount' => '10.00',
+                    'currency' => 'EUR',
                 ],
             ],
-            'custom_currency' => [
-                'input' => ['10.00', 'GBP'],
-                'output' => [
-                    [
-                        'amount' => '10.00',
-                        'currency' => 'GBP',
-                    ],
+        ];
+        yield 'custom_currency' => [
+            'input' => ['10.00', 'GBP'],
+            'output' => [
+                [
+                    'amount' => '10.00',
+                    'currency' => 'GBP',
                 ],
             ],
         ];

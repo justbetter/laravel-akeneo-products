@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\ProductModel;
 
 use JustBetter\AkeneoProducts\Actions\ProductModel\SaveProductModel;
@@ -8,7 +10,7 @@ use JustBetter\AkeneoProducts\Models\ProductModel;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class SaveProductModelTest extends TestCase
+final class SaveProductModelTest extends TestCase
 {
     #[Test]
     public function it_can_save_product_models(): void

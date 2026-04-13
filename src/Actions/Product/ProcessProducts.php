@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Actions\Product;
 
 use JustBetter\AkeneoProducts\Contracts\Product\ProcessesProducts;

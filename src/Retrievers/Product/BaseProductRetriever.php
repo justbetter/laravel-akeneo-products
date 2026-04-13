@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Retrievers\Product;
 
 use JustBetter\AkeneoProducts\Data\ProductData;

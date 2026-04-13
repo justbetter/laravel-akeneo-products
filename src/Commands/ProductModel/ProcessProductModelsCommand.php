@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Commands\ProductModel;
 
 use Illuminate\Console\Command;

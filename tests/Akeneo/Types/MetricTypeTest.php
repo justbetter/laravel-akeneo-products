@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Akeneo\Types;
 
 use JustBetter\AkeneoClient\Client\Akeneo;
@@ -9,7 +11,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 
-class MetricTypeTest extends TestCase
+final class MetricTypeTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -50,25 +52,23 @@ class MetricTypeTest extends TestCase
         $this->assertEquals($output, $value);
     }
 
-    public static function values(): array
+    public static function values(): \Iterator
     {
-        return [
-            [
-                'input' => 100,
-                'output' => [
-                    'amount' => 100,
-                    'unit' => 'cm',
-                ],
+        yield [
+            'input' => 100,
+            'output' => [
+                'amount' => 100,
+                'unit' => 'cm',
             ],
-            [
-                'input' => [
-                    1,
-                    'm',
-                ],
-                'output' => [
-                    'amount' => 1,
-                    'unit' => 'm',
-                ],
+        ];
+        yield [
+            'input' => [
+                1,
+                'm',
+            ],
+            'output' => [
+                'amount' => 1,
+                'unit' => 'm',
             ],
         ];
     }

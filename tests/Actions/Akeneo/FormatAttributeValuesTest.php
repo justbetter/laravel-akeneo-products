@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Actions\Akeneo;
 
 use Illuminate\Support\Collection;
@@ -15,7 +17,7 @@ use JustBetter\AkeneoProducts\Tests\TestCase;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;
 
-class FormatAttributeValuesTest extends TestCase
+final class FormatAttributeValuesTest extends TestCase
 {
     #[Test]
     public function it_can_format_attribute_values_unscoped_unlocalized(): void

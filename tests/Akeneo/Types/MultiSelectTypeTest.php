@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Akeneo\Types;
 
 use JustBetter\AkeneoClient\Client\Akeneo;
@@ -12,7 +14,7 @@ use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 
-class MultiSelectTypeTest extends TestCase
+final class MultiSelectTypeTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -39,16 +41,14 @@ class MultiSelectTypeTest extends TestCase
         $this->mock(ResolvesAttributeOptions::class, function (MockInterface $mock): void {
             $mock
                 ->shouldReceive('resolve')
-                ->andReturnUsing(function (string $code, string $optionCode, string $label): AttributeOptionData {
-                    return AttributeOptionData::of([
-                        'code' => $optionCode,
-                        'attribute' => $code,
-                        'sort_order' => 0,
-                        'labels' => [
-                            'nl_NL' => $label,
-                        ],
-                    ]);
-                });
+                ->andReturnUsing(fn (string $code, string $optionCode, string $label): AttributeOptionData => AttributeOptionData::of([
+                    'code' => $optionCode,
+                    'attribute' => $code,
+                    'sort_order' => 0,
+                    'labels' => [
+                        'nl_NL' => $label,
+                    ],
+                ]));
         });
 
         /** @var MultiSelectType $type */
@@ -67,32 +67,30 @@ class MultiSelectTypeTest extends TestCase
         $this->assertEquals($output, $value);
     }
 
-    public static function values(): array
+    public static function values(): \Iterator
     {
-        return [
-            [
-                'input' => 'code',
-                'output' => ['code'],
+        yield [
+            'input' => 'code',
+            'output' => ['code'],
+        ];
+        yield [
+            'input' => 'some-code',
+            'output' => ['some_code'],
+        ];
+        yield [
+            'input' => 'Hello!@#$%ˆ&*()World 123',
+            'output' => ['Hello_World_123'],
+        ];
+        yield [
+            'input' => [
+                'code',
+                'label',
             ],
-            [
-                'input' => 'some-code',
-                'output' => ['some_code'],
-            ],
-            [
-                'input' => 'Hello!@#$%ˆ&*()World 123',
-                'output' => ['Hello_World_123'],
-            ],
-            [
-                'input' => [
-                    'code',
-                    'label',
-                ],
-                'output' => ['code'],
-            ],
-            [
-                'input' => '',
-                'output' => null,
-            ],
+            'output' => ['code'],
+        ];
+        yield [
+            'input' => '',
+            'output' => null,
         ];
     }
 }

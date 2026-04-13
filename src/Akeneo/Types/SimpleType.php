@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Akeneo\Types;
 
 use JustBetter\AkeneoProducts\Data\AttributeData;
@@ -13,6 +15,6 @@ class SimpleType extends BaseType
 
     public function format(AttributeData $attributeData, mixed $value): string
     {
-        return $value;
+        return (string) $value;
     }
 }

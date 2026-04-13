@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Data;
 
 use JustBetter\AkeneoProducts\Data\AttributeOptionData;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class AttributeOptionDataTest extends TestCase
+final class AttributeOptionDataTest extends TestCase
 {
     #[Test]
     public function it_can_interact_with_attribute_option_data(): void
@@ -20,9 +22,9 @@ class AttributeOptionDataTest extends TestCase
             ],
         ]);
 
-        $this->assertEquals('code', $attributeOptionData->code());
-        $this->assertEquals('attribute', $attributeOptionData->attribute());
-        $this->assertEquals(0, $attributeOptionData->sortOrder());
-        $this->assertEquals(['nl_NL' => 'label'], $attributeOptionData->labels());
+        $this->assertSame('code', $attributeOptionData->code());
+        $this->assertSame('attribute', $attributeOptionData->attribute());
+        $this->assertSame(0, $attributeOptionData->sortOrder());
+        $this->assertSame(['nl_NL' => 'label'], $attributeOptionData->labels());
     }
 }

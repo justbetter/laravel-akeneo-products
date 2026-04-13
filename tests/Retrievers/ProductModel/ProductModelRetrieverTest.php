@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\AkeneoProducts\Tests\Retrievers\ProductModel;
 
 use JustBetter\AkeneoProducts\Exceptions\NotImplementedException;
@@ -7,7 +9,7 @@ use JustBetter\AkeneoProducts\Retrievers\ProductModel\ProductModelRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class ProductModelRetrieverTest extends TestCase
+final class ProductModelRetrieverTest extends TestCase
 {
     #[Test]
     public function it_can_throw_exceptions(): void
