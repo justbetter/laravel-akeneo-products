@@ -18,7 +18,7 @@ final class GetLocalesTest extends TestCase
         Akeneo::fake();
 
         Http::fake([
-            'akeneo/api/rest/v1/locales' => Http::response([
+            'akeneo/api/rest/v1/locales?search=%7B%22enabled%22%3A%5B%7B%22operator%22%3A%22%3D%22%2C%22value%22%3Atrue%7D%5D%7D&limit=100&with_count=false' => Http::response([
                 '_links' => [
                     'first' => [
                         'href' => 'akeneo/api/rest/v1/locales',
