@@ -18,7 +18,7 @@ final class GetScopesTest extends TestCase
         Akeneo::fake();
 
         Http::fake([
-            'akeneo/api/rest/v1/channels' => Http::response([
+            'akeneo/api/rest/v1/channels?limit=100&with_count=false' => Http::response([
                 '_links' => [
                     'first' => [
                         'href' => 'akeneo/api/rest/v1/channels',

@@ -29,7 +29,7 @@ class SimpleSelectType extends BaseType
         /** @var ResolvesAttributeOptions $resolve */
         $resolve = app(ResolvesAttributeOptions::class);
 
-        $option = $resolve->resolve($attributeData->code(), $code, $label);
+        $option = $resolve->resolve($attributeData->code(), $code, (string) $label);
 
         return $option->code();
     }

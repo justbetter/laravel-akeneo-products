@@ -89,6 +89,13 @@ final class MultiSelectTypeTest extends TestCase
             'output' => ['code'],
         ];
         yield [
+            'input' => [
+                'code',
+                0,
+            ],
+            'output' => ['code'],
+        ];
+        yield [
             'input' => '',
             'output' => null,
         ];
