@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.4.0...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.4.1...main)
+## [2.4.1](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.4.1) - 2026-07-20
+
+### What's Changed
+* Handle non-string label for select/multiselect types by @VincentBean in https://github.com/justbetter/laravel-akeneo-products/pull/14
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.4.0...2.4.1
+
 ## [2.4.0](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.4.0) - 2026-04-13
 
 ### What's Changed
