@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.4.1...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.4.2...main)
+## [2.4.2](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.4.2) - 2026-07-23
+
+### What's Changed
+* Remove unused dependency by @VincentBean in https://github.com/justbetter/laravel-akeneo-products/pull/15
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.4.1...2.4.2
+
 ## [2.4.1](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.4.1) - 2026-07-20
 
 ### What's Changed
