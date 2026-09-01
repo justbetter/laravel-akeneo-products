@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.4.2...main)
+[Unreleased changes](https://github.com/justbetter/laravel-akeneo-products/compare/2.4.3...main)
+## [2.4.3](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.4.3) - 2026-09-01
+
+### What's Changed
+* Set retrieve false when retriever returns null by @VincentBean in https://github.com/justbetter/laravel-akeneo-products/pull/16
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-akeneo-products/compare/2.4.2...2.4.3
+
 ## [2.4.2](https://github.com/justbetter/laravel-akeneo-products/releases/tag/2.4.2) - 2026-07-23
 
 ### What's Changed
