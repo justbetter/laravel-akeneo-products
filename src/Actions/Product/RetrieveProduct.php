@@ -7,6 +7,7 @@ namespace JustBetter\AkeneoProducts\Actions\Product;
 use JustBetter\AkeneoProducts\Contracts\Product\RetrievesProduct;
 use JustBetter\AkeneoProducts\Data\ProductData;
 use JustBetter\AkeneoProducts\Jobs\Product\SaveProductJob;
+use JustBetter\AkeneoProducts\Models\Product;
 use JustBetter\AkeneoProducts\Retrievers\Product\BaseProductRetriever;
 
 class RetrieveProduct implements RetrievesProduct
@@ -17,7 +18,13 @@ class RetrieveProduct implements RetrievesProduct
 
         if ($product instanceof ProductData) {
             SaveProductJob::dispatch($product);
+
+            return;
         }
+
+        Product::query()
+            ->where('identifier', '=', $identifier)
+            ->update(['retrieve' => false]);
     }
 
     public static function bind(): void

@@ -7,6 +7,8 @@ namespace JustBetter\AkeneoProducts\Tests\Actions\Product;
 use Illuminate\Support\Facades\Bus;
 use JustBetter\AkeneoProducts\Actions\Product\RetrieveProduct;
 use JustBetter\AkeneoProducts\Jobs\Product\SaveProductJob;
+use JustBetter\AkeneoProducts\Models\Product;
+use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\Product\EmptyProductRetriever;
 use JustBetter\AkeneoProducts\Tests\Fakes\Retrievers\Product\ProductRetriever;
 use JustBetter\AkeneoProducts\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
@@ -25,5 +27,28 @@ final class RetrieveProductTest extends TestCase
         $action->retrieve('identifier');
 
         Bus::assertDispatched(SaveProductJob::class);
+    }
+
+    #[Test]
+    public function it_sets_retrieve_false_when_null(): void
+    {
+        Bus::fake();
+
+        config()->set('akeneo-products.retrievers.product', EmptyProductRetriever::class);
+
+        /** @var Product $product */
+        $product = Product::query()->create([
+            'identifier' => 'identifier',
+            'retrieve' => true,
+            'data' => [],
+        ]);
+
+        /** @var RetrieveProduct $action */
+        $action = app(RetrieveProduct::class);
+        $action->retrieve('identifier');
+
+        Bus::assertNotDispatched(SaveProductJob::class);
+
+        $this->assertFalse($product->refresh()->retrieve);
     }
 }
